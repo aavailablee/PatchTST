@@ -129,6 +129,13 @@ def time_features_from_frequency_str(freq_str: str) -> List[TimeFeature]:
     """
     raise RuntimeError(supported_freq_msg)
 
-
+'''
+time_feature_from_frequency_str返回一个列表，
+其中是根据freq这个str，遍历找到该str对应的type，然后“调用”对应多个类的__call__，
+对应有几个类，返回列表里就有几个返回值，这里其实不是调用，是返回一个个函数
+然后再用feat(dates)，调用函数，
+每个函数里的逻辑可能是归一化？返回结果不超过1？--其实是-0.5到0.5
+call里index是DatetimeIndex，是一个数组，数组可以直接/23的
+'''
 def time_features(dates, freq='h'):
     return np.vstack([feat(dates) for feat in time_features_from_frequency_str(freq)])

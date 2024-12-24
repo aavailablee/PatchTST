@@ -14,6 +14,10 @@ def data_provider(args, flag):
     Data = data_dict[args.data]
     timeenc = 0 if args.embed != 'timeF' else 1
 
+    '''
+    drop_last，如果最后一批数量小于batchSize，丢弃，适合训练逻辑
+    shuffle_flag，打乱顺序，避免学习顺序特征，提高泛化能力
+    '''
     if flag == 'test':
         shuffle_flag = False
         drop_last = True

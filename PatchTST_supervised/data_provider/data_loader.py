@@ -15,6 +15,8 @@ class Dataset_ETT_hour(Dataset):
     def __init__(self, root_path, flag='train', size=None,
                  features='S', data_path='ETTh1.csv',
                  target='OT', scale=True, timeenc=0, freq='h'):
+        # 这个target是目标列，在单变量时序预测(S)的时候会用到的
+        # timeenc，时间编码，0的时候就是简单时间，1会用正余弦编码，可能找到周期信息
         # size [seq_len, label_len, pred_len]
         # info
         if size == None:
@@ -51,12 +53,20 @@ class Dataset_ETT_hour(Dataset):
         border2 = border2s[self.set_type]
 
         if self.features == 'M' or self.features == 'MS':
+            # 先找列再找列中的数值
             cols_data = df_raw.columns[1:]
             df_data = df_raw[cols_data]
         elif self.features == 'S':
             df_data = df_raw[[self.target]]
 
         if self.scale:
+            '''
+            拿到border中的，要出去的数据集；
+            scalar进行标准化
+            fit是算mean、std等数
+            transform是进行操作，这里用的StandardScalar是 (x-m) / std
+            这里是写死了，只有train才会标准化后拿去训练？
+            '''
             train_data = df_data[border1s[0]:border2s[0]]
             self.scaler.fit(train_data.values)
             data = self.scaler.transform(df_data.values)
@@ -73,7 +83,7 @@ class Dataset_ETT_hour(Dataset):
             data_stamp = df_stamp.drop(['date'], axis=1).values
         elif self.timeenc == 1:
             data_stamp = time_features(pd.to_datetime(df_stamp['date'].values), freq=self.freq)
-            data_stamp = data_stamp.transpose(1, 0)
+            data_stamp = data_stamp.transpose(1, 0) # 就是转置
 
         self.data_x = data[border1:border2]
         self.data_y = data[border1:border2]
