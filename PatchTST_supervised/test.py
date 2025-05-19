@@ -28,7 +28,7 @@ fixed_args = {
     "patch_len": 16,
     "stride": 8,
     "des": "Exp",
-    "train_epochs": 10,
+    "train_epochs": 1,
     "patience": 10,
     "lradj": "TST",
     "pct_start": 0.2,

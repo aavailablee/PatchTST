@@ -17,7 +17,7 @@ model_id_name=ice
 data_name=ice
 
 random_seed=2021
-for pred_len in 24 72
+for pred_len in 24
 do
     python -u run_longExp.py \
       --random_seed $random_seed \
