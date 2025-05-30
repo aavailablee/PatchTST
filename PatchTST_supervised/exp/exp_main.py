@@ -197,6 +197,7 @@ class Exp_Main(Exp_Basic):
                     else:
                         # 这里不知道是什么内容，应该是former的
                         # 哦对，former有个score会输出，是这个指标吗
+                        # 这个mark应该有问题，导致这个结果超级下降
                         if self.args.output_attention:
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                             
@@ -206,9 +207,14 @@ class Exp_Main(Exp_Basic):
                     # 如果是MS，多变量预测单变量，就是取最后一维数据的pred长度作为output
                     # 否则就是全部取
                     # 然后batch_y和output计算损失
-                    f_dim = -1 if self.args.features == 'MS' else 0
-                    outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                    batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
+                    # 这里有问题，该是0
+                    if self.args.features == 'MS' and self.args.data == "ice":
+                        outputs = outputs[:, -self.args.pred_len:, 0:1]
+                        batch_y = batch_y[:, -self.args.pred_len:, 0:1].to(self.device)
+                    else:
+                        f_dim = -1 if self.args.features == 'MS' else 0
+                        outputs = outputs[:, -self.args.pred_len:, f_dim:]
+                        batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
                     loss = criterion(outputs, batch_y)
                     train_loss.append(loss.item())
 
@@ -312,10 +318,14 @@ class Exp_Main(Exp_Basic):
                         else:
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
 
-                f_dim = -1 if self.args.features == 'MS' else 0
+                if self.args.features == 'MS' and self.args.data == "ice":
+                    outputs = outputs[:, -self.args.pred_len:, 0:1]
+                    batch_y = batch_y[:, -self.args.pred_len:, 0:1].to(self.device)
+                else:
+                    f_dim = -1 if self.args.features == 'MS' else 0
+                    outputs = outputs[:, -self.args.pred_len:, f_dim:]
+                    batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
                 # print(outputs.shape,batch_y.shape)
-                outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
                 outputs = outputs.detach().cpu().numpy()
                 batch_y = batch_y.detach().cpu().numpy()
 

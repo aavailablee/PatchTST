@@ -19,3 +19,36 @@ mse:0.6887502074241638, mae:0.4002537727355957, rse:0.6874103546142578
 ice_48_24_PatchTST_ice_ftMS_sl48_ll48_pl24_dm128_nh16_el3_dl1_df256_fc1_ebtimeF_dtTrue_Exp_0  
 mse:0.19106897711753845, mae:0.26584741473197937, rse:0.7664612531661987
 
+48_24_PatchTST_ice_ftMS_sl48_ll48_pl24_dm128_nh16_el3_dl1_df256_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.46231570839881897, mae:0.3310396373271942, rse:0.5662863850593567
+
+48_24_DLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.5068137645721436, mae:0.3561669588088989, rse:0.592913031578064
+
+48_24_NLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.5398253798484802, mae:0.3487003445625305, rse:0.6119183301925659
+
+ice_48_24_Autoformer_ice_ftMS_sl48_ll24_pl24_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.5401976108551025, mae:0.3898323178291321, rse:0.612129271030426
+
+ice_48_24_Transformer_ice_ftMS_sl48_ll24_pl24_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.0022333357483148575, mae:0.01626315899193287, rse:0.03935897722840309
+
+ice_48_24_Informer_ice_ftMS_sl48_ll0_pl24_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.41738638281822205, mae:0.3327714204788208, rse:0.5380664467811584
+
+ice_48_24_Transformer_ice_ftMS_sl48_ll0_pl24_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0  
+mse:0.44070515036582947, mae:0.34149298071861267, rse:0.5528927445411682
+
+48_24_NLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.6581728458404541, mae:0.4095919132232666, rse:0.6756733059883118
+
+48_24_DLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.6081366539001465, mae:0.3979784846305847, rse:0.6494824290275574
+
+48_24_NLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.06178995966911316, mae:0.04892025142908096, rse:0.23452700674533844
+
+48_24_DLinear_ice_ftMS_sl48_ll48_pl24_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.05700594186782837, mae:0.048751816153526306, rse:0.22526511549949646
+

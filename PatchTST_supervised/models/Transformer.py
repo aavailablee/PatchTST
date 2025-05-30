@@ -85,6 +85,8 @@ class Model(nn.Module):
         enc_out = self.enc_embedding(x_enc, x_mark_enc)
         enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
 
+        # print(x_dec.shape, x_mark_dec.shape)
+        # x_mark_dec = torch.cat([x_mark_enc[:, -24:, :], x_mark_dec], dim=1)
         dec_out = self.dec_embedding(x_dec, x_mark_dec)
         dec_out = self.decoder(dec_out, enc_out, x_mask=dec_self_mask, cross_mask=dec_enc_mask)
 
