@@ -27,12 +27,12 @@ do
       --model_id $model_id_name_$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
-      --features MS \
+      --features M \
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 4 \
       --des 'Exp' \
-      --train_epochs 10\
+      --train_epochs 3\
       --patience 10\
       --itr 1 --batch_size 16 --learning_rate 0.05 >logs/LongForecasting10/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 done

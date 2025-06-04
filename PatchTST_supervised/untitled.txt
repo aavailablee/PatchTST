@@ -1,0 +1,10 @@
+nohup sh scripts/PatchTST/ice.sh > nohupP 2>&1 &
+
+nohup sh scripts/Linear/ice.sh > nohupN 2>&1 &
+nohup sh scripts/Linear/ice.sh > nohupD 2>&1 &
+
+nohup sh scripts/former_ice_Autoformer.sh > nohupA 2>&1 &
+
+nohup sh scripts/former_ice_Informer.sh > nohupI 2>&1 &
+
+nohup sh scripts/former_ice_Transformer.sh > nohupT 2>&1 &
